@@ -6,14 +6,28 @@ Matrix::Matrix() :matrix(std::vector<std::vector<int>>{})
 
 Matrix::Matrix(int Numrows, int Numcols, Generator* generator) : matrix({})
 {
-	for (int i = 0; i < Numrows; i++)
+	if (Numrows < 0)
 	{
-		std::vector<int> temp{};
-		for (int j = 0; j < Numcols; j++)
+		throw std::out_of_range("Wrong rows count");
+	}
+	else if (Numcols < 0)
+	{
+		throw std::out_of_range("Wrong columns count");
+	}
+	else if (generator == nullptr)
+	{
+		throw std::invalid_argument("Wrong generator");
+	}
+	else {
+		for (size_t i = 0; i < Numrows; i++)
 		{
-			temp.push_back(generator->generate());
+			std::vector<int> temp{};
+			for (size_t j = 0; j < Numcols; j++)
+			{
+				temp.push_back(generator->generate());
+			}
+			this->matrix.push_back(temp);
 		}
-		this->matrix.push_back(temp);
 	}
 }
 

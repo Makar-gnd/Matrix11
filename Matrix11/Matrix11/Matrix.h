@@ -11,14 +11,19 @@ public:
 	/**
 	* @brief Пустой конструктор.
 	*/
-	Matrix();
+	Matrix() {};
 
 	/**
 	* @brief Конструктор матрицы.
 	* @param Numrows Число строк.
 	* @param Numcols Число столбцов.
 	*/
-	Matrix(int Numrows, int Numcols, Generator* generator);
+	Matrix(int numrows, int numcols, Generator* generator);
+
+	/*
+	* @brief initializer_list constructor
+	*/
+	Matrix(size_t numrows, size_t numcols, std::initializer_list<int> matrix);
 
 	/**
 	* @brief Получить количество строк.

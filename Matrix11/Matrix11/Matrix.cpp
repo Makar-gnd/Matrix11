@@ -1,32 +1,43 @@
 ﻿#include "Matrix.h"
 
-Matrix::Matrix() :matrix(std::vector<std::vector<int>>{})
-{
-}
 
-Matrix::Matrix(int Numrows, int Numcols, Generator* generator) : matrix({})
+Matrix::Matrix(int numrows, int numcols, Generator* generator) : matrix({})
 {
-	if (Numrows < 0)
+	if (numrows < 0)
 	{
 		throw std::out_of_range("Wrong rows count");
 	}
-	else if (Numcols < 0)
+	if (numcols < 0)
 	{
 		throw std::out_of_range("Wrong columns count");
 	}
-	else if (generator == nullptr)
+	if (generator == nullptr)
 	{
 		throw std::invalid_argument("Wrong generator");
 	}
-	else {
-		for (size_t i = 0; i < Numrows; i++)
+		for (size_t i = 0; i < numrows; i++)
 		{
 			std::vector<int> temp{};
-			for (size_t j = 0; j < Numcols; j++)
+			for (size_t j = 0; j < numcols; j++)
 			{
 				temp.push_back(generator->generate());
 			}
 			this->matrix.push_back(temp);
+		}
+}
+
+Matrix::Matrix(size_t numrows, size_t numcols, std::initializer_list<int> matrix)
+	: matrix(std::vector<std::vector<int>> {numrows})
+{
+	size_t i = 0;
+	size_t j = 0;
+	for (auto& item : matrix)
+	{
+		this->matrix[j].push_back(item);
+		i++;
+		if (i % numcols == 0)
+		{
+			j++;
 		}
 	}
 }
@@ -48,9 +59,9 @@ std::string Matrix::ToString()
 	{
 		for (size_t j = 0; j < this->GetCols(); j++)
 		{
-			buffer << matrix[i][j] << "\t";
+			buffer << matrix[i][j] << " ";
 		}
-		buffer << "\n";
+		
 	}
 	return buffer.str();
 }

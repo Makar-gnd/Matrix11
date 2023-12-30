@@ -7,11 +7,8 @@ int main()
 {
 	try
 	{
-		Generator* random = new Random(-20, 20);
-		Matrix matrix{ 2,2, random };
-		std::cout << matrix.ToString();
-		Task task{ matrix };
-		std::cout << task.set_min_zero().ToString();
+		Matrix A{ 2,2,{1,2,2,4} };
+		std::cout << A.ToString();
 		return 0;
 	}
 	catch (std::exception& e)

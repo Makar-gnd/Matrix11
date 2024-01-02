@@ -18,12 +18,12 @@ public:
 	* @param Numrows Число строк.
 	* @param Numcols Число столбцов.
 	*/
-	Matrix(int numrows, int numcols, Generator* generator);
+	Matrix(size_t numrows, size_t numcols, Generator* generator);
 
 	/*
 	* @brief initializer_list constructor
 	*/
-	Matrix(size_t numrows, size_t numcols, std::initializer_list<int> matrix);
+	Matrix(std::initializer_list<std::initializer_list<int>> list);
 
 	/**
 	* @brief Получить количество строк.
@@ -44,7 +44,15 @@ public:
 	std::string ToString();
 
 	/**
-	* @brief Перегрузка оператора квадратных скобок
+	* @brief Перегрузка оператора квадратных скобок.
 	*/
 	std::vector<int>& operator[](size_t index);
+
+	/**
+	* @brief Перегрузка оператора <<.
+	* @param os Поток вывода.
+	* @param matrix матрица.
+	* @return os Возвращает матрицу в поток вывода.
+	*/
+	friend std::ostream& operator << (std::ostream& os, Matrix& matrix);
 };

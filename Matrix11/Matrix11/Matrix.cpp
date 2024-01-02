@@ -1,7 +1,7 @@
 ﻿#include "Matrix.h"
 
 
-Matrix::Matrix(int numrows, int numcols, Generator* generator) : matrix({})
+Matrix::Matrix(size_t numrows, size_t numcols, Generator* generator) : matrix({})
 {
 	if (numrows < 0)
 	{
@@ -26,19 +26,11 @@ Matrix::Matrix(int numrows, int numcols, Generator* generator) : matrix({})
 		}
 }
 
-Matrix::Matrix(size_t numrows, size_t numcols, std::initializer_list<int> matrix)
-	: matrix(std::vector<std::vector<int>> {numrows})
+Matrix::Matrix(std::initializer_list<std::initializer_list<int>> list)
 {
-	size_t i = 0;
-	size_t j = 0;
-	for (auto& item : matrix)
+	for (const auto& row : list)
 	{
-		this->matrix[j].push_back(item);
-		i++;
-		if (i % numcols == 0)
-		{
-			j++;
-		}
+		matrix.emplace_back(row);
 	}
 }
 
@@ -61,7 +53,7 @@ std::string Matrix::ToString()
 		{
 			buffer << matrix[i][j] << " ";
 		}
-		
+		buffer << std::endl;
 	}
 	return buffer.str();
 }
@@ -69,4 +61,17 @@ std::string Matrix::ToString()
 std::vector<int>& Matrix::operator[](size_t index)
 {
 	return matrix[index];
+}
+
+std::ostream& operator<<(std::ostream& os, Matrix& matrix)
+{
+	for (size_t i = 0; i < matrix.GetRows(); i++)
+	{
+		for (size_t j = 0; j < matrix.GetCols(); j++)
+		{
+			os << matrix[i][j] << " ";
+		}
+		os << std::endl;
+	}
+	return os;
 }

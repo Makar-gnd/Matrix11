@@ -5,10 +5,14 @@
 #include "../Task1/Task.h"
 int main()
 {
+	setlocale(LC_ALL, "Rus");
 	try
 	{
-		Matrix A{ 2,2,{1,2,2,4} };
+		Matrix A{ {1,1,1},{2,2,2} };
 		std::cout << A.ToString();
+		//std::cout << A.GetCols();
+		Task task1{ A };
+		std::cout << task1.set_min_zero().ToString();
 		return 0;
 	}
 	catch (std::exception& e)

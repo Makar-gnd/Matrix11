@@ -20,7 +20,7 @@ public:
 	*/
 	Matrix(size_t numrows, size_t numcols, Generator* generator);
 
-	/*
+	/**
 	* @brief initializer_list constructor
 	*/
 	Matrix(std::initializer_list<std::initializer_list<int>> list);
@@ -55,4 +55,48 @@ public:
 	* @return os Возвращает матрицу в поток вывода.
 	*/
 	friend std::ostream& operator << (std::ostream& os, Matrix& matrix);
+
+	/**
+	* @brief Assignment operator.
+	* @param other Other matrix.
+	* @return *this.
+	*/
+	Matrix& operator=(Matrix other);
+
+	/**
+	* @brief Swap function.
+	* @param other Other matrix.
+	*/
+	void swap(Matrix& other);
+
+	/**
+	* @brief Addition operator.
+	* @param other Other matrix.
+	* @return Sum.
+	*/
+	Matrix operator+(Matrix& other);
+
+	/**
+	* @brief Difference operator.
+	* @param other Other matrix.
+	* @return Difference.
+	*/
+	Matrix operator-(Matrix& other);
+
+	/**
+	* @brief *operator.
+	* @param other Other matrix.
+	* @return result.
+	*/
+	Matrix operator*(Matrix& other);
+
+	/**
+	* @brief Конструктор заполняющий матрицу числом number.
+	* @param numrows Число строк.
+	* @param numcols Число столбцов.
+	* @param number Значение всех элементов матрицы.
+	*/
+	Matrix(size_t numrows, size_t numcols, int number);
+
+	bool operator==(Matrix& second);
 };

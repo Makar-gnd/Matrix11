@@ -8,11 +8,16 @@ int main()
 	setlocale(LC_ALL, "Rus");
 	try
 	{
-		Matrix A{ {1,1,1},{2,2,2} };
-		std::cout << A.ToString();
+		Matrix A{ {1,1}, {2,2} };
+		Matrix B{ {1,1}, {2,2} };
+		std::cout << (B*A).ToString();
+		if (A == B)
+		{
+			std::cout << "1";
+		};
 		//std::cout << A.GetCols();
-		Task task1{ A };
-		std::cout << task1.set_min_zero().ToString();
+		//Task task1{ A };
+		//std::cout << task1.set_min_zero().ToString();
 		return 0;
 	}
 	catch (std::exception& e)

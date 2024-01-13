@@ -129,11 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConstantGenerator.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="IStream.h" />
     <ClInclude Include="Random.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConstantGenerator.cpp" />
     <ClCompile Include="IStream.cpp" />
     <ClCompile Include="Random.cpp" />
   </ItemGroup>

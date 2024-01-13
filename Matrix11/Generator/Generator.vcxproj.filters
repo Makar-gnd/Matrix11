@@ -24,12 +24,18 @@
     <ClInclude Include="IStream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConstantGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

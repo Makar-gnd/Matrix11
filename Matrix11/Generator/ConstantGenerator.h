@@ -2,16 +2,16 @@
 #include "Generator.h"
 #include <iostream>
 
-class Istream : public Generator
+class ConstGenerator: public Generator
 {
 private:
-	std::istream& in;
+	int value = 0;
 public:
 	/**
 	* @brief Создание потока ввода.
 	* @param in поток ввода.
 	*/
-	Istream(std::istream& in = std::cin);
+	ConstGenerator(int value);
 
 	/**
 	* @brief
